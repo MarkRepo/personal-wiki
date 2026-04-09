@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv /Users/yangqi/Documents/personal-wiki/.claude/skills/youtube/SKILL.md ~/.claude/skills/youtube/SKILL.md)",
+      "Bash(mv /Users/yangqi/Documents/personal-wiki/.claude/skills/epub/SKILL.md ~/.claude/skills/epub/SKILL.md)",
+      "Bash(rm -rf /Users/yangqi/Documents/personal-wiki/.claude/skills)"
+    ]
+  }
+}

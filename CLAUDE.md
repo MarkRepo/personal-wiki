@@ -135,15 +135,16 @@ last_updated: YYYY-MM-DD
 ## 关联页面
 ```
 
-## EPUB 处理
+## 数据源处理
 
-遇到 epub 格式的文档时，**必须使用 pandoc 转换为 Markdown**：
+特定数据源的获取和转换流程通过 **Skills** 按需加载，不在本文件中展开：
 
-```bash
-pandoc <input.epub> -o <output.md>
-```
+| 数据源 | Skill | 触发方式 |
+|--------|-------|----------|
+| YouTube 视频 | `/youtube <url>` | 手动或遇到 YouTube URL 自动触发 |
+| EPUB 电子书 | `/epub <path>` | 手动或遇到 .epub 文件自动触发 |
 
-转换后读取生成的 `.md` 文件内容，按正常 ingest 流程处理。不要尝试直接读取 `.epub` 文件。
+Skill 文件位于 `~/.claude/skills/`（全局，跨知识库共用），包含完整的工具链、命令和踩坑经验。
 
 ## Ingest 操作规范
 
