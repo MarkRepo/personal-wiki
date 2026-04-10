@@ -60,19 +60,25 @@
 
 **当前规模：**
 - 88 个 wiki 页面（21 entities + 60 concepts + 2 events + 9 synthesis）
-- 9 个原始文档源
+- 9 个原始文档源（含 1 次 re-ingest）
 - relations/ 和 macro/ 尚未使用
 
 ---
 
-## Phase 2：补充高价值内容 + 质量提升（第 2-3 周）⬅️ 当前阶段
+## Phase 2：补充高价值内容 + 质量提升（第 2-3 周）🔄 进行中
 
 **目标：wiki 达到 150+ 页面，开始产生跨领域关联价值**
 
-### 2a. 继续 Ingest（目标：再 ingest 5-8 本书/视频）
+### 2a. 继续 Ingest（目标：再 ingest 5-8 本书/视频）✅ 已完成
 
-- [ ] inbox 中待处理：余永定《见证失衡》1&2（宏观经济/国际收支）
-- [ ] 从个人书单中选择高价值书籍 ingest
+- [x] 《大衰退：宏观经济学的圣杯》辜朝明（宏观经济/资产负债表衰退）
+- [x] 毛泽东选集(1-4卷)（政治/哲学/军事）
+- [x] 《见证逆潮》付鹏（全球化/逆全球化/宏观交易）
+- [x] 余永定《见证失衡》1&2（宏观经济/国际收支）
+- [x] 《涛动周期论》周金涛（经济周期/康波理论）
+- [x] 《投资最重要的事》霍华德·马克斯（投资哲学/风险管理）
+- [x] 《置身事内》兰小欢（中国经济/政府治理）
+- [x] 补建三本书缺失概念页
 - [ ] 寻找高质量 YouTube 访谈/播客 ingest
 - [ ] 考虑 ingest 长文章/Newsletter（需要新的 Skill 或手动）
 
@@ -129,7 +135,7 @@
 
 - [ ] 定期 Lint（每月 1 次）：孤立页面、矛盾观点、过时数据、缺失页面
 - [ ] 定期生成知识图谱概览（synthesis/ 中的领域概述页）
-- [ ] 当页面超过 150 时，考虑引入 qmd 本地搜索（BM25 + 向量混合）
+- [ ] qmd 已安装（v2.1.0），在页面超过 150 时正式启用日常搜索
 - [ ] 跨 wiki 关联：personal-wiki 中的宏观经济概念 ↔ investment-wiki 中的实操应用
 - [ ] 探索 query 的高级用法：多页面综合推理、时间线生成、知识缺口分析
 
@@ -156,7 +162,7 @@
 | scripts/clean_vtt.py | VTT 字幕清洗 | ✅ 已完成 |
 | pymupdf4llm | PDF → Markdown | ⬜ 待安装（Phase 3） |
 | faster-whisper | 音频转录 | ⬜ 待安装（Phase 3） |
-| qmd | Wiki 本地搜索 | ⬜ 待引入（150+ 页后） |
+| qmd | Wiki 本地搜索 | ✅ 已安装 v2.1.0（150+ 页后正式启用） |
 
 ---
 
@@ -182,7 +188,8 @@ Personal-wiki 以质量为先，不追求成本最低：
 3. **Opus 为主力模型**：re-ingest 实验证明 Opus 质量显著高于 Sonnet
 4. **不接 RSS/定时任务**：本 wiki 以深度阅读为主，按需 ingest，不需要信息流
 5. **与 investment-wiki 分开维护**：定位不同、输入节奏不同、查询模式不同，分开更清晰
-6. **先不上 qmd 搜索**：88 页时 index.md 导航足够，150+ 页后再考虑
+6. **qmd 已提前部署**：88 页时已安装 qmd v2.1.0，当前 index.md 导航仍够用，150+ 页后正式启用日常搜索
+7. **批量 ingest 高效**：Phase 2a 单日 ingest 7 本书，验证了 Opus 对话式批量处理的可行性
 
 ---
 
@@ -190,5 +197,14 @@ Personal-wiki 以质量为先，不追求成本最低：
 
 - [x] Phase 1：Schema 打磨 + 手动 Ingest（88 页，9 个源）
 - [ ] Phase 2：补充内容 + 启用 relations/macro + 质量提升 ⬅️ 当前
+  - [x] 2a：批量 Ingest 7 本书 → 130 页，16 个源
+  - [ ] 2b：启用 relations/ 和 macro/
+  - [ ] 2c：质量回顾（re-ingest、Lint、交叉引用）
 - [ ] Phase 3：自动化与效率提升
 - [ ] Phase 4：知识网络成熟
+
+**最新快照（2026-04-10）：**
+- 130 个 wiki 页面（29 entities + 86 concepts + 2 events + 13 synthesis）
+- 16 次 ingest（含 1 次 re-ingest），覆盖 15 个文档源
+- qmd v2.1.0 已安装，尚未正式启用日常搜索
+- relations/ 和 macro/ 仍为空，是下一步重点
