@@ -50,7 +50,12 @@ curl -L -o ~/.cache/qmd/models/qmd-query-expansion-1.7B-q4_k_m.gguf \
 curl -L -o ~/.cache/qmd/models/qwen3-reranker-0.6b-q8_0.gguf \
   "https://huggingface.co/ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF/resolve/main/qwen3-reranker-0.6b-q8_0.gguf"
 
-# 2. 设置环境变量（已写入 ~/.zshrc）
+# 2. 设置环境变量（写入 ~/.zshenv，而非 ~/.zshrc）
+#    重要：必须放在 ~/.zshenv 而不是 ~/.zshrc！
+#    - ~/.zshrc 仅在交互式 shell 中加载
+#    - ~/.zshenv 对所有 zsh 进程生效，包括 Claude Code 的 Bash 工具
+#    - 如果放在 ~/.zshrc，Claude Code 中运行 qmd embed 会因为缺少环境变量
+#      而走 ipull 网络请求，导致无限卡在 "Gathering information"
 export QMD_EMBED_MODEL="$HOME/.cache/qmd/models/embeddinggemma-300M-Q8_0.gguf"
 export QMD_GENERATE_MODEL="$HOME/.cache/qmd/models/qmd-query-expansion-1.7B-q4_k_m.gguf"
 export QMD_RERANK_MODEL="$HOME/.cache/qmd/models/qwen3-reranker-0.6b-q8_0.gguf"
