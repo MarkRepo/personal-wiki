@@ -222,3 +222,26 @@
   - concepts/ICO.md — 首次代币发行融资方式
   - synthesis/币安人生读书笔记.md — 全书读书笔记
 - 更新 index.md：新增 9 个条目，页面总数 131→140
+
+## [2026-04-11] synthesis | 知识库 App 架构设计
+
+- 新建 synthesis/知识库App架构设计.md：将 personal-wiki 工作流产品化的架构思考
+- 覆盖：LLM 部署策略、ingest 管线设计、成本模型、冷启动问题
+- 更新 index.md：页面总数 140→141
+
+## [2026-04-11] synthesis | 知识库 App 全栈实现方案
+
+- 新建 synthesis/知识库App实现方案.md：全栈技术选型与分阶段开发计划
+- 覆盖：Tauri+Next.js+FastAPI 技术栈、数据模型、Ingest Pipeline 四阶段设计、同步机制、项目结构
+- 关联 synthesis/知识库App架构设计.md 作为前置文档
+- 更新 index.md：页面总数 141→142
+
+## [2026-04-11] ingest | FICC宏观交易框架手绘知识图谱
+
+- 来源：微信图片（手绘mind map），涵盖大类资产分类、周期联动、原油定价、股票估值
+- 新建 concepts/FICC分析框架.md：以利率曲线为核心的大类资产联动方法论，嵌入手绘全景图
+- 图片：raw/assets/FICC分析框架/宏观交易框架全景图.png（首次在 wiki 页面中引用图片）
+- 更新 entities/付鹏.md：新增 FICC 分析框架关联
+- 更新 concepts/美林投资时钟.md：新增 FICC 框架交叉引用
+- 更新 concepts/三级分工体系.md：新增 FICC 框架交叉引用
+- 更新 index.md：页面总数 142→143
