@@ -1,0 +1,126 @@
+{
+  "created": "2026-04-12",
+  "instruction": "inbox全量ingest任务队列。每次完成一项后更新status。compact后CronJob继续执行。",
+  "tasks": [
+    {
+      "id": "s1_transcribe",
+      "label": "第一季 231集音视频转录",
+      "status": "completed",
+      "note": "231 transcripts in /tmp/transcripts/",
+      "updated": "2026-04-12 07:48"
+    },
+    {
+      "id": "s1_summarize",
+      "label": "第一季 转录→摘要→wiki",
+      "status": "completed",
+      "depends": "s1_transcribe",
+      "note": "10分类全部完成：货币外汇/金融政策/原油能源/商品投资/港股/贵金属/14天美国/房地产/产业公司/近期更新。4集残留（编号模糊/无音频）",
+      "updated": "2026-04-12 07:48"
+    },
+    {
+      "id": "s2_ingest",
+      "label": "第二季 56集PDF提炼",
+      "status": "completed",
+      "source": "inbox/第二季/ (large video dir, pending user decision to move)",
+      "target": "wiki/synthesis/付鹏说第二季目录.md",
+      "method": "pymupdf+tesseract OCR",
+      "note": "56/56 PDFs OCR'd; wiki/synthesis/付鹏说第二季目录.md created (312 lines, 2021-2022 coverage); topic pages updated",
+      "updated": "2026-04-12 11:42"
+    },
+    {
+      "id": "s4_html_ingest",
+      "label": "第四季 35集HTML/JPG提炼",
+      "status": "completed",
+      "source": "inbox/第四季/",
+      "target": "wiki/synthesis/付鹏说第四季目录.md",
+      "method": "html_text_extraction + JPG_OCR",
+      "note": "38 transcripts + synthesis page created; topic pages updated (金融政策/商品/贵金属/原油)",
+      "updated": "2026-04-12 11:35"
+    },
+    {
+      "id": "s4_video_ingest",
+      "label": "第四季 视频转录",
+      "status": "cancelled",
+      "note": "HTML/JPG content available for all eps; video transcription not needed",
+      "updated": "2026-04-12 11:00"
+    },
+    {
+      "id": "s5_html_ingest",
+      "label": "第五季 36集HTML/JPG/MP4提炼",
+      "status": "completed",
+      "source": "inbox/第五季/",
+      "target": "wiki/synthesis/付鹏说第五季目录.md",
+      "method": "html_text+JPG_OCR+whisper (EP21-24/30/33-36)",
+      "note": "All 36+3加餐 done; synthesis page created; 5 topic pages updated; qmd embed ran (673 chunks)",
+      "updated": "2026-04-12 11:35"
+    },
+    {
+      "id": "s5_video_ingest",
+      "label": "第五季 EP21-24/30/33-36 + 加餐3集 whisper转录",
+      "status": "completed",
+      "method": "mlx_whisper",
+      "note": "9 MP4-only eps + 3 加餐 done (12 total); all /tmp/transcripts/add_*.txt written",
+      "updated": "2026-04-12 11:10"
+    },
+    {
+      "id": "master_yuanjun",
+      "label": "袁骏大师课（宏观变局应对）PDF提炼",
+      "status": "completed",
+      "source": "raw/33. 【完结】宏观变局的应对之道·袁骏/ (moved from inbox)",
+      "method": "pymupdf+tesseract OCR",
+      "note": "4/4 PDFs done; wiki/synthesis/付鹏说-大师课-袁骏宏观变局.md created; source dir moved to raw/",
+      "updated": "2026-04-12 11:40"
+    },
+    {
+      "id": "master_she",
+      "label": "佘建跃大师课（石油逻辑）PDF提炼",
+      "status": "completed",
+      "source": "raw/37.【完结】石油的逻辑· 佘建跃  大师课/ (moved from inbox)",
+      "method": "pymupdf+tesseract OCR",
+      "note": "23/23 PDFs done; wiki/synthesis/付鹏说-大师课-佘建跃石油逻辑.md created; 原油能源.md updated",
+      "updated": "2026-04-12 11:40"
+    },
+    {
+      "id": "master_guan07",
+      "label": "管涛大师课07（读懂人民币）PDF提炼",
+      "status": "completed",
+      "source": "raw/【完结】07读懂人民币·管涛  大师课/ (moved from inbox)",
+      "method": "pymupdf+tesseract OCR",
+      "note": "24/24 PDFs done; wiki/synthesis/付鹏说-大师课-管涛人民币汇率.md created",
+      "updated": "2026-04-12 11:40"
+    },
+    {
+      "id": "master_guan13",
+      "label": "管涛大师课13（不要担心人民币）PDF提炼",
+      "status": "completed",
+      "source": "raw/【完结】13 不要担心人民币·管涛/ (moved from inbox)",
+      "method": "pymupdf+tesseract OCR",
+      "note": "combined with master_guan07; source dir moved to raw/",
+      "updated": "2026-04-12 11:40"
+    },
+    {
+      "id": "youtube_videos",
+      "label": "4个YouTube视频下载+转录",
+      "status": "cancelled",
+      "source": "inbox/youtube 视频链接.md",
+      "urls": [
+        "https://www.youtube.com/watch?v=B2sYUrY0Rr0",
+        "https://www.youtube.com/watch?v=r4xeqi3lUCI",
+        "https://www.youtube.com/watch?v=WSNor6VH7oI",
+        "https://www.youtube.com/watch?v=0AN9NzaBFt4"
+      ],
+      "method": "youtube_skill",
+      "updated": "2026-04-12 07:50",
+      "note": "用户取消"
+    },
+    {
+      "id": "screen_recording",
+      "label": "录屏 1.5GB MOV转录",
+      "status": "cancelled",
+      "source": "inbox/录屏2026-04-11 23.46.06.mov",
+      "method": "mlx_whisper",
+      "note": "用户取消",
+      "updated": "2026-04-12 07:50"
+    }
+  ]
+}
