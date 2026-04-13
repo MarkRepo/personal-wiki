@@ -2,3 +2,5 @@
 .obsidian/
 raw/
 inbox/
+.claude/scheduled_tasks.lock
+copilot/
