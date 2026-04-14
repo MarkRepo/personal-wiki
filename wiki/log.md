@@ -3,6 +3,13 @@
 > 格式：`## [YYYY-MM-DD] 操作类型 | 描述`
 > 只追加，不修改历史记录
 
+## [2026-04-14] ingest | 《掌控习惯》詹姆斯·克利尔（英文原版）
+
+pandoc 转换 epub → 策略一单 Agent 分批并行 Read（563k bytes / ~140k tokens）。
+新建：synthesis/掌控习惯读书笔记、concepts/执行意图、concepts/习惯叠加、concepts/诱惑捆绑、concepts/两分钟法则、concepts/金发姑娘法则。
+更新：concepts/微习惯（大幅扩充）、concepts/习惯四步模型、concepts/行为转变四大定律、entities/詹姆斯·克利尔。
+图片：raw/assets/Atomic_Habits/ 中关键图表已筛选嵌入读书笔记。
+
 ## [2026-04-14] ingest | 《置身事内》内联引用重构（re-ingest）
 
 ## [2026-04-14] ingest | 《置身事内》新规范重写读书笔记
