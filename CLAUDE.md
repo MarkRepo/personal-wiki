@@ -34,7 +34,7 @@ name:
 type: person | company | product | place | other
 tags: []
 related: []
-last_updated: YYYY-MM-DD
+last_updated: YYYY-MM-DDTHH:MM:SS
 source_count: 0
 ---
 
@@ -71,7 +71,7 @@ name:
 domain: []   # 所属领域，如 [物理, 信息论]
 tags: []
 related: []
-last_updated: YYYY-MM-DD
+last_updated: YYYY-MM-DDTHH:MM:SS
 ---
 
 ## 定义
@@ -107,7 +107,7 @@ name:
 date: YYYY-MM-DD   # 或 YYYY 年代
 tags: []
 related: []
-last_updated: YYYY-MM-DD
+last_updated: YYYY-MM-DDTHH:MM:SS
 ---
 
 ## 事件经过
@@ -126,7 +126,7 @@ last_updated: YYYY-MM-DD
 ---
 topic: 
 tags: []
-last_updated: YYYY-MM-DD
+last_updated: YYYY-MM-DDTHH:MM:SS
 ---
 
 ## 当前状态
@@ -144,7 +144,7 @@ last_updated: YYYY-MM-DD
 title: 
 scope: []   # 覆盖的实体/概念
 tags: []
-last_updated: YYYY-MM-DD
+last_updated: YYYY-MM-DDTHH:MM:SS
 ---
 
 ## 核心结论
@@ -168,7 +168,7 @@ Frontmatter 保留：
 title: 
 type: book-note
 tags: []
-last_updated: YYYY-MM-DD
+last_updated: YYYY-MM-DDTHH:MM:SS
 ingest_model: claude-sonnet-4.6
 ---
 ```
@@ -184,7 +184,7 @@ ingest_model: claude-sonnet-4.6
 | 专 | 内容专属 | 不套通用模板，不是所有书都能用的空话，内容是这本书专属的核心总结 |
 | 全 | 无遗漏 | 关键结论、核心论据、重要转折无遗漏；次要细节可省，主干不丢 |
 
-末尾列出相关 wiki 页面链接。
+在正文叙述中，凡讲到某个衍生 concept/实体页面对应的内容时，在该处内联引用（`[[concepts/XXX]]`、`[[entities/XXX]]`），不在末尾单独列举列表。**无需强制覆盖所有衍生页面**——若某页面与读书笔记核心叙事无自然交汇点，保留在末尾关联页面中即可。叙事结构服从书的内在逻辑，引用跟着叙事走，不能为了覆盖引用而新建章节。
 
 ## 数据源处理
 
@@ -254,13 +254,21 @@ wc -c raw/书名_converted.md   # 查文件字节数，除以 4 得 token 估算
 8. **移动原始文档**：将 inbox 中的原始文档（epub/网页/html 等）以及 pandoc 转换后的 `.md` 文件全部移至 `raw/`，确保 inbox 清空
 9. **更新 qmd 索引**：运行 `qmd embed` 为新增/修改的页面生成向量索引
 10. **Ingest 质量评分**（书籍/长篇内容时执行，短文章可跳过）：
-    对本次读书笔记按六维各打 1-10 分，并追加到 `wiki/ingest_scores.md`：
-    - **准**：无事实错误，不曲解作者原意，不脑补
+    评分是**整体过程**，分两层，顺序执行：
+
+    **第一层（子过程）：各衍生页面自查**
+    逐一按该页面类型的自查标准检查（概念页：清/透/用/联；实体页：特/全/实）。
+    子页面质量直接影响读书笔记的"全"维度——子页面不达标须先修正再评分。
+
+    **第二层（主评分）：读书笔记六维评分**
+    评分对象是读书笔记正文 **+ 所有衍生子页面的内容**，视为一个整体。
+    各维各打 1-10 分，追加到 `wiki/ingest_scores.md`：
+    - **准**：无事实错误，不曲解作者原意，不脑补（含子页面）
     - **核**：紧扣核心主题与主线逻辑，不跑偏
     - **精**：极简浓缩，无废话，最少字讲清关键
     - **逻**：脉络清晰，论证/叙事顺序可循，逻辑自洽
     - **专**：内容是本书专属，不套通用模板空话
-    - **全**：核心结论/论据/转折无遗漏，主干完整
+    - **全**：核心结论/论据/转折无遗漏，主干完整（子页面贡献的内容纳入"全"的考量）
 
     `wiki/ingest_scores.md` 格式（追加一行）：
     ```
